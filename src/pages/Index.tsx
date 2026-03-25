@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sprout, Beef, Wheat } from "lucide-react";
+import { ArrowRight, Sprout, Beef, Wheat, Bird, Leaf } from "lucide-react";
 import heroImg from "@/assets/hero-farm.jpg";
 import ContactModal from "@/components/ContactModal";
 
