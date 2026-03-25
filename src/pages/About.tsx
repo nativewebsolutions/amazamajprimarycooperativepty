@@ -60,19 +60,33 @@ const About = () => (
       </div>
     </section>
 
-    {/* Testimonial */}
-    <section className="py-16 bg-earth text-center">
-      <div className="container max-w-2xl">
-        <motion.blockquote
+    {/* Testimonials */}
+    <section className="py-16 bg-earth">
+      <div className="container max-w-2xl space-y-12">
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="font-display text-xl text-primary-foreground italic leading-relaxed"
+          className="text-center"
         >
-          "We signed the MOU because we saw our neighbors prosper. This is our land, and now we finally own our future."
-        </motion.blockquote>
-        <p className="text-gold font-semibold mt-4">Chief L. Ntabankulu</p>
-        <p className="text-primary-foreground/60 text-sm">Village Chief</p>
+          <blockquote className="font-display text-xl text-primary-foreground italic leading-relaxed">
+            "We signed the MOU because we saw our neighbors prosper. This is our land, and now we finally own our future."
+          </blockquote>
+          <p className="text-gold font-semibold mt-4">Chief L. Ntabankulu</p>
+          <p className="text-primary-foreground/60 text-sm">Village Chief</p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <blockquote className="font-display text-xl text-primary-foreground italic leading-relaxed">
+            "The model is brilliant. Aggregated land without displacing the community. This is the future of ethical agri-investment."
+          </blockquote>
+          <p className="text-gold font-semibold mt-4">Current Angel Investor</p>
+          <p className="text-primary-foreground/60 text-sm">Name withheld</p>
+        </motion.div>
       </div>
     </section>
 
