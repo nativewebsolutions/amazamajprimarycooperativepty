@@ -2,51 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 40 30% 97%;
-    --foreground: 30 20% 12%;
+    --background: 120 15% 96%;
+    --foreground: 160 30% 10%;
 
-    --card: 40 25% 95%;
-    --card-foreground: 30 20% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 160 30% 10%;
 
-    --popover: 40 30% 97%;
-    --popover-foreground: 30 20% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 30% 10%;
 
-    --primary: 142 40% 28%;
-    --primary-foreground: 40 30% 97%;
+    --primary: 145 65% 38%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 36 60% 50%;
-    --secondary-foreground: 30 20% 12%;
+    --secondary: 42 90% 55%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 40 20% 90%;
-    --muted-foreground: 30 10% 45%;
+    --muted: 120 10% 90%;
+    --muted-foreground: 160 10% 40%;
 
-    --accent: 36 60% 50%;
-    --accent-foreground: 30 20% 12%;
+    --accent: 42 90% 55%;
+    --accent-foreground: 0 0% 10%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 40 20% 85%;
-    --input: 40 20% 85%;
-    --ring: 142 40% 28%;
+    --border: 120 15% 85%;
+    --input: 120 15% 85%;
+    --ring: 145 65% 38%;
 
     --radius: 0.75rem;
 
-    --earth: 25 35% 22%;
-    --earth-foreground: 40 30% 97%;
-    --gold: 42 80% 55%;
-    --gold-foreground: 30 20% 12%;
+    --earth: 160 35% 14%;
+    --earth-foreground: 0 0% 98%;
+    --gold: 42 95% 58%;
+    --gold-foreground: 0 0% 10%;
 
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Source Sans 3', sans-serif;
+    --glow: 145 80% 50%;
+
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -63,8 +61,39 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Glowing green border animation for forms */
+@keyframes glow-border {
+  0%, 100% {
+    box-shadow: 0 0 8px hsl(145 80% 50% / 0.3), 0 0 20px hsl(145 80% 50% / 0.1);
+    border-color: hsl(145 65% 38% / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 16px hsl(145 80% 50% / 0.6), 0 0 40px hsl(145 80% 50% / 0.2);
+    border-color: hsl(145 65% 38% / 0.8);
+  }
+}
+
+.glow-form {
+  animation: glow-border 2.5s ease-in-out infinite;
+  border: 2px solid hsl(145 65% 38% / 0.4);
+}
+
+/* Hovering fluid button */
+@keyframes float-btn {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.btn-float {
+  animation: float-btn 2s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+.btn-float:hover {
+  box-shadow: 0 8px 30px hsl(145 80% 50% / 0.4), 0 0 20px hsl(42 95% 58% / 0.3);
+  transform: translateY(-2px) scale(1.03);
 }
