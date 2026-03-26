@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sprout, Beef, Wheat, Bird, Leaf } from "lucide-react";
+import { ArrowRight, Sprout, Beef, Wheat, Bird, Leaf, ShoppingCart } from "lucide-react";
 import heroImg from "@/assets/hero-farm.jpg";
 import logo from "@/assets/logo.png";
 import ContactModal from "@/components/ContactModal";
@@ -11,21 +11,18 @@ const Index = () => (
   <div className="font-body">
     {/* Hero */}
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      <img src={heroImg} alt="Amaz Amaj farmland" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/70 via-earth/50 to-gold/30" />
+      <img src={heroImg} alt="Large scale farming" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
+      <div className="absolute inset-0 bg-gradient-to-br from-earth/60 via-primary/40 to-gold/20" />
       <div className="container relative z-10 py-32">
         <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }}>
-          <motion.div variants={fade} className="flex items-center gap-4 mb-6">
-            <img src={logo} alt="Amaz Amaj Logo" className="w-16 h-16 drop-shadow-lg" width={512} height={512} />
-            <p className="text-gold font-bold tracking-widest uppercase text-sm">
-              Amaz Amaj Primary Cooperative PTY LTD
-            </p>
+          <motion.div variants={fade} className="flex items-center gap-5 mb-6">
+            <img src={logo} alt="Amaz Amaj Logo" className="w-24 h-24 md:w-32 md:h-32 drop-shadow-2xl" width={512} height={512} />
           </motion.div>
-          <motion.h1 variants={fade} className="font-display text-5xl md:text-7xl font-bold text-primary-foreground leading-tight max-w-2xl">
-            Sustainable Farming. <br />Real Returns.
+          <motion.h1 variants={fade} className="font-display text-4xl sm:text-6xl md:text-8xl font-bold text-primary-foreground leading-tight max-w-3xl drop-shadow-lg">
+            Amaz Amaj Primary Cooperative PTY LTD
           </motion.h1>
-          <motion.p variants={fade} className="text-primary-foreground/90 max-w-lg mt-4 text-lg font-light">
-            A diversified agricultural model built on community-owned land — delivering high-yield returns and rural empowerment.
+          <motion.p variants={fade} className="text-primary-foreground/90 max-w-lg mt-6 text-lg md:text-xl font-light">
+            Sustainable Farming. Real Returns. A diversified agricultural model built on community-owned land.
           </motion.p>
           <motion.div variants={fade} className="flex gap-4 mt-8 flex-wrap">
             <ContactModal
@@ -35,6 +32,12 @@ const Index = () => (
                 </span>
               }
             />
+            <Link
+              to="/order"
+              className="btn-float inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold px-7 py-3.5 rounded-lg shadow-lg"
+            >
+              <ShoppingCart size={18} /> Place an Order
+            </Link>
             <Link
               to="/about"
               className="btn-float inline-flex items-center gap-2 border-2 border-primary-foreground/50 text-primary-foreground px-7 py-3.5 rounded-lg font-semibold backdrop-blur-sm hover:bg-primary-foreground/10 transition-colors"
@@ -137,13 +140,21 @@ const Index = () => (
         <p className="font-display text-3xl text-primary-foreground font-bold mb-6">
           Join the movement. Build Africa's agricultural future.
         </p>
-        <ContactModal
-          trigger={
-            <span className="btn-float inline-flex items-center gap-2 bg-gold text-gold-foreground font-bold px-10 py-4 rounded-lg shadow-lg text-lg cursor-pointer">
-              Get In Touch <ArrowRight size={20} />
-            </span>
-          }
-        />
+        <div className="flex flex-wrap gap-4 justify-center">
+          <ContactModal
+            trigger={
+              <span className="btn-float inline-flex items-center gap-2 bg-gold text-gold-foreground font-bold px-10 py-4 rounded-lg shadow-lg text-lg cursor-pointer">
+                Get In Touch <ArrowRight size={20} />
+              </span>
+            }
+          />
+          <Link
+            to="/order"
+            className="btn-float inline-flex items-center gap-2 border-2 border-primary-foreground text-primary-foreground font-bold px-10 py-4 rounded-lg text-lg"
+          >
+            <ShoppingCart size={20} /> Order Now
+          </Link>
+        </div>
       </div>
     </section>
   </div>
