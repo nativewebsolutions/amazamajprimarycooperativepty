@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sprout, Beef, Wheat, Bird, Leaf, ShoppingCart } from "lucide-react";
+import { ArrowRight, Sprout, Beef, Wheat, Bird, Leaf, ShoppingCart, User } from "lucide-react";
 import heroImg from "@/assets/hero-farm.jpg";
 import logo from "@/assets/logo.png";
 import ContactModal from "@/components/ContactModal";
@@ -16,7 +16,7 @@ const Index = () => (
       <div className="container relative z-10 py-32">
         <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }}>
           <motion.div variants={fade} className="flex items-center gap-5 mb-6">
-            <img src={logo} alt="Amaz Amaj Logo" className="w-24 h-24 md:w-32 md:h-32 drop-shadow-2xl" width={512} height={512} />
+            <img src={logo} alt="Amaz Amaj Logo" className="w-48 h-48 md:w-64 md:h-64 drop-shadow-2xl" width={512} height={512} />
           </motion.div>
           <motion.h1 variants={fade} className="font-display text-4xl sm:text-6xl md:text-8xl font-bold text-primary-foreground leading-tight max-w-3xl drop-shadow-lg">
             Amaz Amaj Primary Cooperative PTY LTD
@@ -68,7 +68,7 @@ const Index = () => (
           whileInView="show"
           viewport={{ once: true }}
           variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
         >
           {[
             { icon: <Sprout className="text-primary" size={32} />, title: "Industrial Hemp", area: "800 hectares", desc: "Fiber, seed, CBD — premium markets" },
@@ -76,14 +76,29 @@ const Index = () => (
             { icon: <Beef className="text-primary" size={32} />, title: "Cattle", area: "250 head", desc: "Beef, dairy, breeding stock" },
             { icon: <Bird className="text-gold" size={32} />, title: "Sheep, Goats & Poultry", area: "550+ head", desc: "Meat, wool, eggs — rapid cash flow" },
           ].map((item, i) => (
-            <motion.div key={i} variants={fade} className="bg-background border border-border rounded-xl p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
-              <div className="flex justify-center mb-3">{item.icon}</div>
-              <h3 className="font-display text-xl font-bold text-foreground">{item.title}</h3>
+            <motion.div key={i} variants={fade} className="bg-background border border-border rounded-xl p-5 text-center hover:shadow-lg hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
+              <div className="flex justify-center mb-2">{item.icon}</div>
+              <h3 className="font-display text-lg font-bold text-foreground">{item.title}</h3>
               <p className="text-gold font-bold text-sm mt-1">{item.area}</p>
-              <p className="text-muted-foreground text-sm mt-2">{item.desc}</p>
+              <p className="text-muted-foreground text-xs mt-1">{item.desc}</p>
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Small ad blocks under Scale */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+          {[
+            { label: "Fresh Beef", tag: "Available Now" },
+            { label: "Organic Maize", tag: "Bulk Orders" },
+            { label: "Hemp Fiber", tag: "Premium Quality" },
+            { label: "Free-Range Eggs", tag: "Farm Direct" },
+          ].map((ad, i) => (
+            <Link key={i} to="/order" className="bg-primary/10 border border-primary/20 rounded-lg p-3 text-center hover:bg-primary/20 transition-colors">
+              <p className="font-body font-bold text-primary text-sm">{ad.label}</p>
+              <p className="text-xs text-gold font-semibold">{ad.tag}</p>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -107,7 +122,61 @@ const Index = () => (
               </motion.div>
             ))}
           </div>
+
+          {/* Small ad blocks under Value-Added */}
+          <div className="grid grid-cols-3 gap-3 mt-6">
+            {[
+              { label: "Textiles", tag: "Hemp-Based" },
+              { label: "Fertilizer", tag: "100% Organic" },
+              { label: "Export Grain", tag: "Certified" },
+            ].map((ad, i) => (
+              <Link key={i} to="/order" className="bg-gold/10 border border-gold/20 rounded-lg p-3 text-center hover:bg-gold/20 transition-colors">
+                <p className="font-body font-bold text-foreground text-sm">{ad.label}</p>
+                <p className="text-xs text-primary font-semibold">{ad.tag}</p>
+              </Link>
+            ))}
+          </div>
         </motion.div>
+      </div>
+    </section>
+
+    {/* Referrals / Testimonials */}
+    <section className="bg-card py-16">
+      <div className="container max-w-3xl">
+        <h2 className="font-display text-3xl font-bold text-foreground text-center mb-10">What People Say</h2>
+        <div className="grid sm:grid-cols-2 gap-6">
+          {/* Referral with profile */}
+          <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
+                <User className="text-primary" size={24} />
+              </div>
+              <div>
+                <p className="font-display font-bold text-foreground">Chief Ntabankulu</p>
+                <p className="text-xs text-muted-foreground">Community Leader</p>
+              </div>
+            </div>
+            <p className="text-muted-foreground text-sm italic">
+              "This cooperative has transformed our community. The land is finally being used to create real jobs and feed our people."
+            </p>
+          </div>
+
+          {/* Referral without profile image */}
+          <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
+                <span className="font-display font-bold text-gold text-lg">AI</span>
+              </div>
+              <div>
+                <p className="font-display font-bold text-foreground">Angel Investor</p>
+                <p className="text-xs text-muted-foreground">Private Investment Group</p>
+              </div>
+            </div>
+            <p className="text-muted-foreground text-sm italic">
+              "A diversified agricultural model with real land assets — this is exactly the kind of venture Africa needs for sustainable growth."
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -134,23 +203,24 @@ const Index = () => (
       </div>
     </section>
 
-    {/* CTA strip */}
-    <section className="bg-primary py-14 text-center">
+    {/* CTA strip — Yellow bg, green text */}
+    <section className="bg-gold py-14 text-center">
       <div className="container">
-        <p className="font-display text-3xl text-primary-foreground font-bold mb-6">
-          Join the movement. Build Africa's agricultural future.
+        <p className="font-display text-3xl text-primary font-bold mb-3">
+          Join the movement. Let's build Africa's agricultural future together.
         </p>
-        <div className="flex flex-wrap gap-4 justify-center">
+        <p className="text-primary/80 font-body mb-2">sakumzidokoda@gmail.com · 072 015 7762 · 079 972 859</p>
+        <div className="flex flex-wrap gap-4 justify-center mt-6">
           <ContactModal
             trigger={
-              <span className="btn-float inline-flex items-center gap-2 bg-gold text-gold-foreground font-bold px-10 py-4 rounded-lg shadow-lg text-lg cursor-pointer">
+              <span className="btn-float inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold px-10 py-4 rounded-lg shadow-lg text-lg cursor-pointer">
                 Get In Touch <ArrowRight size={20} />
               </span>
             }
           />
           <Link
             to="/order"
-            className="btn-float inline-flex items-center gap-2 border-2 border-primary-foreground text-primary-foreground font-bold px-10 py-4 rounded-lg text-lg"
+            className="btn-float inline-flex items-center gap-2 border-2 border-primary text-primary font-bold px-10 py-4 rounded-lg text-lg"
           >
             <ShoppingCart size={20} /> Order Now
           </Link>
